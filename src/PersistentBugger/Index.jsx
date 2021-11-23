@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { persistence } from './function';
 
 const Index = () => {
 
@@ -7,59 +8,12 @@ const Index = () => {
         error: null,
         response: null
     })
-
-    const persistence = ( num ) => {
-        let result = 1; 
-        let ronda = 0; 
-        let init = num; 
-
-
-        if ( !num || num.trim() <= 0 ) {
-            return { 
-                num: `${num}`.trim(),
-                response: false,
-                error: "Number are required" 
-            }
-        }
-        if ( num < 0 ) {
-            return {
-                num: `${num}`.trim(),
-                response: false,
-                error: "Only positive numbers are acepted" 
-            }
-        }
-        if ( isNaN(num) ) {
-            return {
-                num: `${num}`.trim(),
-                response: false,
-                error: "Only numbers are acepted" 
-            }
-        }
-        if ( num.length === 1 ) {
-            return {
-                num: `${num}`.trim(),
-                response: 0,
-                error: null
-            }
-        }
-        
-        do {
-            String(num).split('').forEach( n => result = result * parseInt(n));
-            ronda += 1;
-            num = result;
-            result = 1;
-        } while ( num > 9 && num > 0 );
-
-        return {
-            num: init,
-            response: ronda,
-            error: null
-        }
-    }
-
+ 
     const handleSubmit = ( e ) => {
         e.preventDefault();
-        const resp = persistence( state.num );
+        const resp = persistence( 4 );
+        console.log( resp );
+        // const resp = persistence( state.num );
         setState( resp )
     }
 
