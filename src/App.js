@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import ValidatePin from './ValidatePin/Index'
 
-function App() {
+const App = () => {
+
+  const [view, setView] = useState(2)
+  const onSelect = ( active ) => setView( active );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container pt-3">
+      <h1 > Prueba solucion factible </h1>
+      <hr />
+      <ul className="nav">
+        <li className="nav-item">
+          <a className="nav-link" onClick={()=>onSelect(1)}> Validate Pin </a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" onClick={()=>onSelect(2)}> Persistent Bugger </a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" onClick={()=>onSelect(3)}> Find the missing letter </a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" onClick={()=>onSelect(4)}> Array.diff </a>
+        </li>
+      </ul>
+      <div className="content" className="container">
+        { view === 1 && <ValidatePin />}
+        { view === 2 && <ValidatePin />}
+        { view === 3 && <ValidatePin />}
+        { view === 4 && <ValidatePin />}
+      </div>
     </div>
   );
 }
