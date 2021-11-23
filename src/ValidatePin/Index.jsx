@@ -51,7 +51,7 @@ const Index = () => {
         <div className="row">
             <form className="row g-3" onSubmit={ handleSubmit }>
                 <div className="col-6">
-                    <label for="pincode"><b>PIN code</b></label>
+                    <label htmlFor="pincode"><b>PIN code</b></label>
                     <input type="text" className="form-control my-3" id="pincode" onChange={ handleChange } />
                     <button type="submit" className="btn btn-primary ">Send</button>
                 </div>

@@ -69,8 +69,8 @@ const Index = () => {
         <div className="row">
             <form className="row g-3" onSubmit={ handleSubmit }>
                 <div className="col-6">
-                    <label htmlFor="number"><b>Number</b></label>
-                    <input type="text" className="form-control my-3" id="number" onChange={ handleChange } />
+                    <label for="letters"><b>Number</b></label>
+                    <input type="text" className="form-control my-3" id="letters" onChange={ handleChange } />
                     <button type="submit" className="btn btn-primary ">Send</button>
                 </div>
                 <div className="col-6">

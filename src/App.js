@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import ValidatePin from './ValidatePin/Index'
 import PersistentBugger from './PersistentBugger/Index'
+import MissingLetter from './MissingLetter/Index'
 
 const App = () => {
 
-  const [view, setView] = useState(2)
+  const [view, setView] = useState(3)
   const onSelect = ( active ) => setView( active );
   return (
     <div className="container pt-3">
@@ -27,7 +28,7 @@ const App = () => {
       <div className="content" className="container">
         { view === 1 && <ValidatePin />}
         { view === 2 && <PersistentBugger />}
-        { view === 3 && <ValidatePin />}
+        { view === 3 && <MissingLetter />}
         { view === 4 && <ValidatePin />}
       </div>
     </div>
