@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ValidatePin from './ValidatePin/Index'
+import PersistentBugger from './PersistentBugger/Index'
 
 const App = () => {
 
@@ -25,7 +26,7 @@ const App = () => {
       </ul>
       <div className="content" className="container">
         { view === 1 && <ValidatePin />}
-        { view === 2 && <ValidatePin />}
+        { view === 2 && <PersistentBugger />}
         { view === 3 && <ValidatePin />}
         { view === 4 && <ValidatePin />}
       </div>
