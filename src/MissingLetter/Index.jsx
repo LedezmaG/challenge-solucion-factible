@@ -3,73 +3,77 @@ import React, { useState } from 'react'
 const Index = () => {
 
     const [state, setState] = useState({
-        num: null,
+        array: [],
         error: null,
         response: null
     })
 
-    const persistence = ( num ) => {
-        let result = 1; 
-        let ronda = 0; 
-        let init = num; 
+    const findMissingLetter = ( letters ) => {
+
+        const lettersSet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+        const onlyLetters = new RegExp('^[a-z]+', 'i');
+        const upper = new RegExp('^[A-Z]+');
+        let firstElement, lastElement = null;
+        let result = [];
 
 
-        if ( !num || num.trim() <= 0 ) {
+        if ( !letters || !Array.isArray(letters) ) {
             return { 
-                num: `${num}`.trim(),
+                array: letters,
                 response: false,
-                error: "Number are required" 
+                error: "Array required" 
             }
         }
-        if ( num < 0 ) {
+        if ( letters.length < 2 ) {
             return {
-                num: `${num}`.trim(),
+                array: letters,
                 response: false,
-                error: "Only positive numbers are acepted" 
+                error: "Array 2 characters long min" 
             }
         }
-        if ( isNaN(num) ) {
+        if ( !onlyLetters.test( letters ) ) {
             return {
-                num: `${num}`.trim(),
+                array: letters,
                 response: false,
-                error: "Only numbers are acepted" 
+                error: "Only letters" 
             }
         }
-        if ( num.length === 1 ) {
-            return {
-                num: `${num}`.trim(),
-                response: 0,
-                error: null
-            }
+        if ( upper.test( letters ) ) {
+            lettersSet.forEach( (l,i) => lettersSet[i] = l.toUpperCase() )
         }
-        
-        do {
-            String(num).split('').forEach( n => result = result * parseInt(n));
-            ronda += 1;
-            num = result;
-            result = 1;
-        } while ( num > 9 && num > 0 );
+
+        firstElement = lettersSet.indexOf( letters[0] );
+        lastElement = lettersSet.lastIndexOf( letters[letters.length - 1] );
+
+        lettersSet.forEach( (l,i) => {
+            if ( i >= firstElement && i <= lastElement ) {
+                if ( !letters.includes( l ) ) {
+                    result.push( l )
+                }
+            }
+        })
 
         return {
-            num: init,
-            response: ronda,
+            array: letters,
+            response: result,
             error: null
         }
     }
 
     const handleSubmit = ( e ) => {
         e.preventDefault();
-        const resp = persistence( state.num );
+
+        const resp = findMissingLetter( state.array.split('') );
         setState( resp )
     }
 
-    const handleChange = ({target}) => setState( {...state, num: target.value })
+    const handleChange = ({target}) => setState( {...state, array: target.value })
 
     return (
         <div className="row">
             <form className="row g-3" onSubmit={ handleSubmit }>
                 <div className="col-6">
-                    <label for="letters"><b>Number</b></label>
+                    <label htmlFor="letters"><b>Letters</b></label>
                     <input type="text" className="form-control my-3" id="letters" onChange={ handleChange } />
                     <button type="submit" className="btn btn-primary ">Send</button>
                 </div>
