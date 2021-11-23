@@ -22,6 +22,12 @@ const Index = () => {
     return (
         <div className="row">
             <form className="row g-3" onSubmit={ handleSubmit }>
+                <div className="col-12">
+                    <p> 
+                        <b>Persistent Bugger</b> <br /> 
+                        Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit. 
+                    </p>
+                </div>
                 <div className="col-6">
                     <label htmlFor="number"><b>Number</b></label>
                     <input type="text" className="form-control my-3" id="number" onChange={ handleChange } />

@@ -11,6 +11,7 @@ const App = () => {
   return (
     <div className="container pt-3">
       <h1 > Prueba solucion factible </h1>
+      <small> Developed by David Ledezma</small>
       <hr />
       <ul className="nav">
         <li className="nav-item">

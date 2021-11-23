@@ -27,6 +27,12 @@ const Index = () => {
     return (
         <div className="row">
             <form className="row g-3" onSubmit={ handleSubmit }>
+                <div className="col-12">
+                    <p> 
+                        <b> Array difference</b> <br /> 
+                        Implement a difference function, which subtracts one list from another and returns the result. It should remove all values from list a, which are present in list b keeping their order.
+                    </p>
+                </div>
                 <div className="col-6">
                     <label htmlFor="set1"><b>Set 1</b></label>
                     <input type="text" className="form-control my-3" id="set1" name="set1" onChange={ handleChange } />
